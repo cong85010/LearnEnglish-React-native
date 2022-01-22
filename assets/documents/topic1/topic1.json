@@ -1,0 +1,124 @@
+{
+  "id": "topic1",
+  "title": "Story 1: Khi Tin gặp sếp xin nghỉ làm",
+  "content":"Hôm nay, Tin lên văn phòng gặp sếp xin nghỉ làm. Sếp vô cùng (1), và hỏi vì sao Tin lại (2) như vậy. Tin nói, Tin muốn nghỉ làm để (3) vào (4) riêng của mình. Cứ tưởng Tin sẽ bị phạt vì (5). Bất ngờ thay, sếp không tức giận mà lại (6) và nói sẽ (7) Tin nếu Tin cần. Buổi chiều, Tin đi tìm chủ nhà và (8) hợp đồng thuê nhà. Tin bị (9) phải đóng (10) 6 tháng, tuy nhiên, hiện tại Tin không (11) nên Tin (12) chủ nhà cho thêm 1 ít thời gian. Cuối cùng, 2 (13) cũng (14) và (15). Tin và một số người bạn của mình đang lên (16) về marketing, (17), … Tin biết rằng, (18) là vô cùng quan trọng, (19), Tin đã xem xét việc lower (20) nhưng vẫn đảm bảo (21) cho (22)",
+  "transfer": "(1) Ngạc nhiên - (2) Quyết định - (3) Tập trung - (4) Kinh doanh - (5) Phá vỡ hợp đồng - (6) Chấp nhận - (7) Hỗ trợ - (8) Thương lượng - (9) Bắt buộc - (10) Tiền đặt cọc - (11) Có khả năng chi trả - (12) Thuyết phục - (13) Các bên - (14) Thống nhất - (15) Ký hợp đồng - (16) Chiến lược - (17) Sản phẩm - (18) Sự hài lòng của khách hàng - (19) Do đó - (20) Giảm giá - (21) Chất lượng - (22) Khách hàng -",
+  "transfers": [
+    {
+      "id": 1,
+      "es": "surprised",
+      "vi": "Ngạc nhiên"
+    },
+    {
+      "id": 2,
+      "es": "decide",
+      "vi": "Quyết định"
+    },
+    {
+      "id": 3,
+      "es": "focus",
+      "vi": "Tập trung"
+    },
+    {
+      "id": 4,
+      "es": "business",
+      "vi": "Kinh doanh"
+    },
+    {
+      "id": 5,
+      "es": "breach (the contract)",
+      "vi": "Phá vỡ hợp đồng"
+    },
+    {
+      "id": 6,
+      "es": "accept",
+      "vi": "Chấp nhận"
+    },
+    {
+      "id": 7,
+      "es": "support",
+      "vi": "Hỗ trợ"
+    },
+    {
+      "id": 8,
+      "es": "negotiate",
+      "vi": "Thương lượng"
+    },
+    {
+      "id": 9,
+      "es": "obligate",
+      "vi": "Bắt buộc"
+    },
+    {
+      "id": 10,
+      "es": "deposit",
+      "vi": "Tiền đặt cọc"
+    },
+    {
+      "id": 11,
+      "es": "affordable",
+      "vi": "Có khả năng chi trả"
+    },
+    {
+      "id": 12,
+      "es": "convince",
+      "vi": "Thuyết phục"
+    },
+    {
+      "id": 13,
+      "es": "party",
+      "vi": "Các bên"
+    },
+    {
+      "id": 14,
+      "es": "compromise",
+      "vi": "Thống nhất"
+    },
+    {
+      "id": 15,
+      "es": "sign the contract",
+      "vi": "Ký hợp đồng"
+    },
+    {
+      "id": 16,
+      "es": "strategy",
+      "vi": "Chiến lược"
+    },
+    {
+      "id": 17,
+      "es": "product",
+      "vi": "Sản phẩm"
+    },
+    {
+      "id": 18,
+      "es": "customer satisfaction",
+      "vi": "Sự hài lòng của khách hàngc"
+    },
+    {
+      "id": 19,
+      "es": "therefore",
+      "vi": "Do đó"
+    },
+    {
+      "id": 19,
+      "es": "therefore",
+      "vi": "Do đó"
+    },
+    {
+      "id": 20,
+      "es": "lower price",
+      "vi": "Giảm giá"
+    },
+    {
+      "id": 21,
+      "es": "quality",
+      "vi": "Chất lượng"
+    },
+    {
+      "id": 22,
+      "es": "customer",
+      "vi": "Khách hàng"
+    }
+  ]
+
+}
