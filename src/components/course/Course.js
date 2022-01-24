@@ -2,18 +2,19 @@ import { Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import React from "react";
 
 export function Course({ course, navigation, route = "Danh sách" }) {
-  const { id, image, title } = course;
-  const onCourse = () => navigation.navigate(route, { id: id });
+  const { id, image, title, type } = course;
+  const onCourse = () => navigation.navigate(route, { id, type });
   return (
     <TouchableOpacity style={styles.course} onPress={onCourse}>
       <Image source={image} />
-      <Text style={styles.text}>{title}</Text>
+      <Text numberOfLines={2} style={styles.text}>{title}</Text>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   course: {
+    height: 100,
     width: "90%",
     flexDirection: "row",
     padding: 20,
@@ -21,9 +22,10 @@ const styles = StyleSheet.create({
     margin: 20,
     marginBottom: 0,
     borderRadius: 25,
-    borderColor: '#BBB7B7',
+    borderColor: "#BBB7B7",
     borderStyle: "solid",
-    borderWidth: 1
+    borderWidth: 1,
+
   },
   image: {
     width: "50px",

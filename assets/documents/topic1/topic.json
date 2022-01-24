@@ -1,0 +1,550 @@
+{"topic": 
+  [{
+    "id": 1,
+    "title": "Story 1: Khi Tin gặp sếp xin nghỉ làm",
+    "content":"Hôm nay, Tin lên văn phòng gặp sếp xin nghỉ làm. Sếp vô cùng (1), và hỏi vì sao Tin lại (2) như vậy. Tin nói, Tin muốn nghỉ làm để (3) vào (4) riêng của mình. Cứ tưởng Tin sẽ bị phạt vì (5). Bất ngờ thay, sếp không tức giận mà lại (6) và nói sẽ (7) Tin nếu Tin cần. Buổi chiều, Tin đi tìm chủ nhà và (8) hợp đồng thuê nhà. Tin bị (9) phải đóng (10) 6 tháng, tuy nhiên, hiện tại Tin không (11) nên Tin (12) chủ nhà cho thêm 1 ít thời gian. Cuối cùng, 2 (13) cũng (14) và (15). Tin và một số người bạn của mình đang lên (16) về marketing, (17), … Tin biết rằng, (18) là vô cùng quan trọng, (19), Tin đã xem xét việc lower (20) nhưng vẫn đảm bảo (21) cho (22)",
+    "transfers": [
+      {
+        "id": 1,
+        "es": "surprised",
+        "vi": "Ngạc nhiên"
+      },
+      {
+        "id": 2,
+        "es": "decide",
+        "vi": "Quyết định"
+      },
+      {
+        "id": 3,
+        "es": "focus",
+        "vi": "Tập trung"
+      },
+      {
+        "id": 4,
+        "es": "business",
+        "vi": "Kinh doanh"
+      },
+      {
+        "id": 5,
+        "es": "breach (the contract)",
+        "vi": "Phá vỡ hợp đồng"
+      },
+      {
+        "id": 6,
+        "es": "accept",
+        "vi": "Chấp nhận"
+      },
+      {
+        "id": 7,
+        "es": "support",
+        "vi": "Hỗ trợ"
+      },
+      {
+        "id": 8,
+        "es": "negotiate",
+        "vi": "Thương lượng"
+      },
+      {
+        "id": 9,
+        "es": "obligate",
+        "vi": "Bắt buộc"
+      },
+      {
+        "id": 10,
+        "es": "deposit",
+        "vi": "Tiền đặt cọc"
+      },
+      {
+        "id": 11,
+        "es": "affordable",
+        "vi": "Có khả năng chi trả"
+      },
+      {
+        "id": 12,
+        "es": "convince",
+        "vi": "Thuyết phục"
+      },
+      {
+        "id": 13,
+        "es": "party",
+        "vi": "Các bên"
+      },
+      {
+        "id": 14,
+        "es": "compromise",
+        "vi": "Thống nhất"
+      },
+      {
+        "id": 15,
+        "es": "sign the contract",
+        "vi": "Ký hợp đồng"
+      },
+      {
+        "id": 16,
+        "es": "strategy",
+        "vi": "Chiến lược"
+      },
+      {
+        "id": 17,
+        "es": "product",
+        "vi": "Sản phẩm"
+      },
+      {
+        "id": 18,
+        "es": "customer satisfaction",
+        "vi": "Sự hài lòng của khách hàngc"
+      },
+      {
+        "id": 19,
+        "es": "therefore",
+        "vi": "Do đó"
+      },
+      {
+        "id": 20,
+        "es": "lower price",
+        "vi": "Giảm giá"
+      },
+      {
+        "id": 21,
+        "es": "quality",
+        "vi": "Chất lượng"
+      },
+      {
+        "id": 22,
+        "es": "customer",
+        "vi": "Khách hàng"
+      }
+    ]
+  
+  },
+  {
+    "id": 2,
+    "title": "Story 2: Ngày khai trương",
+    "content":"Hôm nay là ngày grand (1), sáng nay Tin dậy sớm để (2) mọi thứ cho đâu vào đấy. 01 tuần trước, Tin đã đi phát (3) khắp nơi, (4) trên internet về buổi lễ hôm nay nên hi vọng sẽ (5) nhiều người. Hơn nữa, với convenient (6) của công ty nên hôm nay có nhiều người(7). Nhân dịp khai trương, công ty đưa ra 01 (8), đó là (9) 30% tất cả các sản phẩm nếu khách hàng purchase(10) trong hôm nay. Bởi vì khách hàng thường luôn compare(11) giá cả khi mua hàng, Tin đã dự trù nhiều dòng sản phẩm various(12) để accommodate(13) nhu cầu của khách hàng. Ngoài ra, those who(14) mua hàng hôm nay sẽ được free shipping(15). Công ty announce(16), mọi người gather(17) tập trung trước sân khấu, Tin address(18) một bài demonstration(19) về các benefit(20) nếu khách hàng mua hàng tại công ty của Tin. Ai nấy cũng đều evaluate(21) cao về speech(22) của Tin. Đặc biệt, nếu ai apply for(23) membership(24) sẽ được giảm thêm nữa",
+    "transfers": [
+      {
+        "id": 1,
+        "es": "grand opening",
+        "vi": "Khai trương"
+      },
+      {
+        "id": 2,
+        "es": "prepare",
+        "vi": "chuẩn bị"
+      },
+      {
+        "id": 3,
+        "es": "brochure",
+        "vi": "Sách quảng cáo sản phẩm"
+      },
+      {
+        "id": 4,
+        "es": "advertise",
+        "vi": "quảng cáo"
+      },
+      {
+        "id": 5,
+        "es": "attract",
+        "vi": " thu hút"
+      },
+      {
+        "id": 6,
+        "es": "convenient location",
+        "vi": "địa điểm/vị trí thuận tiện"
+      },
+      {
+        "id": 7,
+        "es": "well-attended",
+        "vi": " có nhiều người tham dự"
+      },
+      {
+        "id": 8,
+        "es": "special offer",
+        "vi": "giảm giá đặc biệt"
+      },
+      {
+        "id": 9,
+        "es": "discount",
+        "vi": "giảm giá"
+      },
+      {
+        "id": 10,
+        "es": "purchase",
+        "vi": "mua"
+      },
+      {
+        "id": 11,
+        "es": "compare",
+        "vi": "so sánh"
+      },
+      {
+        "id": 12,
+        "es": "various",
+        "vi": "đa dạng"
+      },
+      {
+        "id": 13,
+        "es": "accommodate",
+        "vi": " đáp ứng"
+      },
+      {
+        "id": 14,
+        "es": "those who",
+        "vi": "những ai người mà"
+      },
+      {
+        "id": 15,
+        "es": "free shipping",
+        "vi": "miễn phí giao hàng"
+      },
+      {
+        "id": 16,
+        "es": "announce",
+        "vi": "thông báo"
+      },
+      {
+        "id": 17,
+        "es": "gather",
+        "vi": "tập hợp"
+      },
+      {
+        "id": 18,
+        "es": "address",
+        "vi": "phát biểu"
+      },
+      {
+        "id": 19,
+        "es": "demonstration",
+        "vi": "bài chứng minh/thuyết minh"
+      },
+      {
+        "id": 20,
+        "es": "benefit",
+        "vi": " lợi ích"
+      },
+      {
+        "id": 21,
+        "es": "evaluate",
+        "vi": "đánh giá"
+      },
+      {
+        "id": 22,
+        "es": "speech",
+        "vi": "bài nói/bài phát biểu"
+      },
+      {
+        "id": 23,
+        "es": "apply for",
+        "vi": "đăng ký"
+      },
+      {
+        "id": 24,
+        "es": "membership",
+        "vi": "thành viên"
+      }] },
+  {
+    "id": 3,
+    "title": "Story 3: Chuyện ở công ty của Tin",
+    "content":"Hôm nay, Tin hold(1) một meeting(2) tại headquarters(3) của công ty. Currently(4), công ty đang có 1 accountant(5) và 02 technician(6) . Trong cuộc họp này, Tin trình bày plan(7) và determine(8) rằng goal(9) của công ty phải đạt revenue(10) ít nhất 1 triệu đô trong năm nay và sẽ establish(11) một branch(12) năm tới. Do vậy, Tin designate(13) Anna làm head of sales department(14) . Tin rất impressed(15) với Anna về experience(16) của cô ấy trong buổi interview(17) vừa rồi.Tin believe(18) rằng công ty sẽ develop(19) nếu có Anna contribute(20) sức lực. Nhiệm vụ của Anna không chỉ làm sao để increase sales(21) của công ty lên mà còn phải responsible for(22) việc tìm ra supplier(23) tốt. Tất nhiên Anna có thể dùng budget(24) của công ty và nhờ human resources department(25) để support(26) tìm. Nếu thuận lợi, cuối năm mọi người đều sẽ được tăng salary(27) và tất nhiên là có opportunity(28) để được promote(29) lên các vị trí khác.",
+    "transfers": [
+      {
+        "id": 1,
+        "es": "hold",
+        "vi": "tổ chức"
+      },
+      {
+        "id": 2,
+        "es": "meeting",
+        "vi": "cuộc họp"
+      },
+      {
+        "id": 3,
+        "es": "headquarters",
+        "vi": "trụ sở chính"
+      },
+      {
+        "id": 4,
+        "es": "Currently",
+        "vi": "Hiện tại"
+      },
+      {
+        "id": 5,
+        "es": "accountant",
+        "vi": "kế toán"
+      },
+      {
+        "id": 6,
+        "es": "technician",
+        "vi": "kỹ thuật viên"
+      },
+      {
+        "id": 7,
+        "es": "plan",
+        "vi": "kế hoạch"
+      },
+      {
+        "id": 8,
+        "es": "determine",
+        "vi": "xác định"
+      },
+      {
+        "id": 9,
+        "es": "goal",
+        "vi": "mục tiêu"
+      },
+      {
+        "id": 10,
+        "es": "revenue",
+        "vi": "doanh thu"
+      },
+      {
+        "id": 11,
+        "es": "establish",
+        "vi": "thành lập"
+      },
+      {
+        "id": 12,
+        "es": "branch",
+        "vi": "chi nhánh"
+      },
+      {
+        "id": 13,
+        "es": "designate",
+        "vi": "chỉ định"
+      },
+      {
+        "id": 14,
+        "es": "head of sales department",
+        "vi": "trưởng phòng bán hàng"
+      },
+      {
+        "id": 15,
+        "es": "impressed",
+        "vi": "ấn tượng"
+      },
+      {
+        "id": 16,
+        "es": "experience",
+        "vi": "kinh nghiệm"
+      },
+      {
+        "id": 17,
+        "es": "interview",
+        "vi": "phỏng vấn"
+      },
+      {
+        "id": 18,
+        "es": "believe",
+        "vi": "tin tưởng"
+      },
+      {
+        "id": 19,
+        "es": "develop",
+        "vi": "phát triển"
+      },
+      {
+        "id": 20,
+        "es": "contribute",
+        "vi": "đóng góp"
+      },
+      {
+        "id": 21,
+        "es": "increase sales",
+        "vi": "đánh giá"
+      },
+      {
+        "id": 22,
+        "es": "responsible for",
+        "vi": "bài nói/bài phát biểu"
+      },
+      {
+        "id": 23,
+        "es": "supplier",
+        "vi": "đăng ký"
+      },
+      {
+        "id": 24,
+        "es": "budget",
+        "vi": "thành viên"
+      },
+      {
+        "id": 25,
+        "es": "human resources department",
+        "vi": "thành viên"
+      },
+      {
+        "id": 26,
+        "es": "support",
+        "vi": "thành viên"
+      },
+      {
+        "id": 27,
+        "es": "salary",
+        "vi": "thành viên"
+      },
+      {
+        "id": 28,
+        "es": "opportunity",
+        "vi": "thành viên"
+      },
+      {
+        "id": 29,
+        "es": "promote",
+        "vi": "thành viên"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Story 3: Chuyện ở công ty của Tin",
+    "content":"Hôm nay, Tin hold(1) một meeting(2) tại headquarters(3) của công ty. Currently(4), công ty đang có 1 accountant(5) và 02 technician(6) . Trong cuộc họp này, Tin trình bày plan(7) và determine(8) rằng goal(9) của công ty phải đạt revenue(10) ít nhất 1 triệu đô trong năm nay và sẽ establish(11) một branch(12) năm tới. Do vậy, Tin designate(13) Anna làm head of sales department(14) . Tin rất impressed(15) với Anna về experience(16) của cô ấy trong buổi interview(17) vừa rồi.Tin believe(18) rằng công ty sẽ develop(19) nếu có Anna contribute(20) sức lực. Nhiệm vụ của Anna không chỉ làm sao để increase sales(21) của công ty lên mà còn phải responsible for(22) việc tìm ra supplier(23) tốt. Tất nhiên Anna có thể dùng budget(24) của công ty và nhờ human resources department(25) để support(26) tìm. Nếu thuận lợi, cuối năm mọi người đều sẽ được tăng salary(27) và tất nhiên là có opportunity(28) để được promote(29) lên các vị trí khác",
+    "transfers": [
+      {
+        "id": 1,
+        "es": "hold",
+        "vi": "tổ chức"
+      },
+      {
+        "id": 2,
+        "es": "meeting",
+        "vi": "cuộc họp"
+      },
+      {
+        "id": 3,
+        "es": "headquarters",
+        "vi": "trụ sở chính"
+      },
+      {
+        "id": 4,
+        "es": "Currently",
+        "vi": "Hiện tại"
+      },
+      {
+        "id": 5,
+        "es": "accountant",
+        "vi": "kế toán"
+      },
+      {
+        "id": 6,
+        "es": "technician",
+        "vi": "kỹ thuật viên"
+      },
+      {
+        "id": 7,
+        "es": "plan",
+        "vi": "kế hoạch"
+      },
+      {
+        "id": 8,
+        "es": "determine",
+        "vi": "xác định"
+      },
+      {
+        "id": 9,
+        "es": "goal",
+        "vi": "mục tiêu"
+      },
+      {
+        "id": 10,
+        "es": "revenue",
+        "vi": "doanh thu"
+      },
+      {
+        "id": 11,
+        "es": "establish",
+        "vi": "thành lập"
+      },
+      {
+        "id": 12,
+        "es": "branch",
+        "vi": "chi nhánh"
+      },
+      {
+        "id": 13,
+        "es": "designate",
+        "vi": "chỉ định"
+      },
+      {
+        "id": 14,
+        "es": "head of sales department",
+        "vi": "trưởng phòng bán hàng"
+      },
+      {
+        "id": 15,
+        "es": "impressed",
+        "vi": "ấn tượng"
+      },
+      {
+        "id": 16,
+        "es": "experience",
+        "vi": "kinh nghiệm"
+      },
+      {
+        "id": 17,
+        "es": "interview",
+        "vi": "phỏng vấn"
+      },
+      {
+        "id": 18,
+        "es": "believe",
+        "vi": "tin tưởng"
+      },
+      {
+        "id": 19,
+        "es": "develop",
+        "vi": "phát triển"
+      },
+      {
+        "id": 20,
+        "es": "contribute",
+        "vi": "đóng góp"
+      },
+      {
+        "id": 21,
+        "es": "increase sales",
+        "vi": "đánh giá"
+      },
+      {
+        "id": 22,
+        "es": "responsible for",
+        "vi": "bài nói/bài phát biểu"
+      },
+      {
+        "id": 23,
+        "es": "supplier",
+        "vi": "đăng ký"
+      },
+      {
+        "id": 24,
+        "es": "budget",
+        "vi": "thành viên"
+      },
+      {
+        "id": 25,
+        "es": "human resources department",
+        "vi": "thành viên"
+      },
+      {
+        "id": 26,
+        "es": "support",
+        "vi": "thành viên"
+      },
+      {
+        "id": 27,
+        "es": "salary",
+        "vi": "thành viên"
+      },
+      {
+        "id": 28,
+        "es": "opportunity",
+        "vi": "thành viên"
+      },
+      {
+        "id": 29,
+        "es": "promote",
+        "vi": "thành viên"
+      }
+    ]
+  }
+]
+}

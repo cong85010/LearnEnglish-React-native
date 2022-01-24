@@ -11,27 +11,25 @@ import img1 from "./images/book.png";
 import Topic from "../topic/Topic";
 import { Course } from "../course/Course";
 import { createStackNavigator } from "@react-navigation/stack";
-
+import data from "../../../assets/documents/topic1/topic.json";
 const arrCourse = [
   {
     image: img1,
     title: "Học 1500 từ vựng theo người Do Thái",
     id: 1,
+    type: "topic",
   },
   {
     image: img1,
-    title: "Học 1500 từ vựng theo người Do Thái",
+    title: "Học 100 từ vựng theo người Do Thái",
     id: 2,
+    type: "songs",
   },
   {
     image: img1,
-    title: "Học 1500 từ vựng theo người Do Thái",
+    title: "Học 23213 từ vựng theo người Do Thái",
     id: 3,
-  },
-  {
-    image: img1,
-    title: "Học 1500 từ vựng theo người Do Thái",
-    id: 4,
+    type: "songngu",
   },
 ];
 const arrCourse2 = [
@@ -48,10 +46,11 @@ const arrCourse2 = [
 ];
 
 export const Courses = ({ route, navigation }) => {
-  const { id } = route.params;
+  const { type } = route.params;
+  console.log(route);
   return (
     <ScrollView>
-      {arrCourse2.map((course, key) => (
+      {data[type]?.map((course, key) => (
         <Course
           course={course}
           key={key}
