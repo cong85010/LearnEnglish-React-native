@@ -12,6 +12,7 @@ import Topic from "../topic/Topic";
 import { Course } from "../course/Course";
 import { createStackNavigator } from "@react-navigation/stack";
 import data from "../../../assets/documents/topic1/topic.json";
+import Game from "../games/Game";
 const arrCourse = [
   {
     image: img1,
@@ -24,12 +25,6 @@ const arrCourse = [
     title: "Học 100 từ vựng theo người Do Thái",
     id: 2,
     type: "songs",
-  },
-  {
-    image: img1,
-    title: "Học 23213 từ vựng theo người Do Thái",
-    id: 3,
-    type: "songngu",
   },
 ];
 const arrCourse2 = [
@@ -47,7 +42,6 @@ const arrCourse2 = [
 
 export const Courses = ({ route, navigation }) => {
   const { type } = route.params;
-  console.log(route);
   return (
     <ScrollView>
       {data[type]?.map((course, key) => (
@@ -86,6 +80,7 @@ export function MyStack() {
       <Stack.Screen name="Trang chủ" component={MainHome} />
       <Stack.Screen name="Danh sách" component={Courses} />
       <Stack.Screen name="Chủ đề" component={Topic} />
+      <Stack.Screen name="Chơi game" component={Game} />
       {/* <Stack.Screen name="Settings" component={Settings} /> */}
     </Stack.Navigator>
   );

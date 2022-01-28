@@ -2,7 +2,7 @@
   [{
     "id": 1,
     "title": "Story 1: Khi Tin gặp sếp xin nghỉ làm",
-    "content":"Hôm nay, Tin lên văn phòng gặp sếp xin nghỉ làm. Sếp vô cùng (1), và hỏi vì sao Tin lại (2) như vậy. Tin nói, Tin muốn nghỉ làm để (3) vào (4) riêng của mình. Cứ tưởng Tin sẽ bị phạt vì (5). Bất ngờ thay, sếp không tức giận mà lại (6) và nói sẽ (7) Tin nếu Tin cần. Buổi chiều, Tin đi tìm chủ nhà và (8) hợp đồng thuê nhà. Tin bị (9) phải đóng (10) 6 tháng, tuy nhiên, hiện tại Tin không (11) nên Tin (12) chủ nhà cho thêm 1 ít thời gian. Cuối cùng, 2 (13) cũng (14) và (15). Tin và một số người bạn của mình đang lên (16) về marketing, (17), … Tin biết rằng, (18) là vô cùng quan trọng, (19), Tin đã xem xét việc lower (20) nhưng vẫn đảm bảo (21) cho (22)",
+    "content":"Hôm nay, Tin lên văn phòng gặp sếp xin nghỉ làm. Sếp vô cùng (1), và hỏi vì sao Tin lại (2) như vậy. Tin nói, Tin muốn nghỉ làm để (3) vào (4) riêng của mình. Cứ tưởng Tin sẽ bị phạt vì (5). Bất ngờ thay, sếp không tức giận mà lại (6) và nói sẽ (7) Tin nếu Tin cần. Buổi chiều, Tin đi tìm chủ nhà và (8) hợp đồng thuê nhà. Tin bị (9) phải đóng (10) 6 tháng, tuy nhiên, hiện tại Tin không (11) nên Tin (12) chủ nhà cho thêm một ít thời gian. Cuối cùng, 2 (13) cũng (14) và (15). Tin và một số người bạn của mình đang lên (16) về marketing, (17), … Tin biết rằng, (18) là vô cùng quan trọng, (19), Tin đã xem xét việc lower (20) nhưng vẫn đảm bảo (21) cho (22)",
     "transfers": [
       {
         "id": 1,
@@ -92,7 +92,7 @@
       {
         "id": 18,
         "es": "customer satisfaction",
-        "vi": "Sự hài lòng của khách hàngc"
+        "vi": "Sự hài lòng của khách hàng"
       },
       {
         "id": 19,
@@ -245,7 +245,7 @@
   {
     "id": 3,
     "title": "Story 3: Chuyện ở công ty của Tin",
-    "content":"Hôm nay, Tin hold(1) một meeting(2) tại headquarters(3) của công ty. Currently(4), công ty đang có 1 accountant(5) và 02 technician(6) . Trong cuộc họp này, Tin trình bày plan(7) và determine(8) rằng goal(9) của công ty phải đạt revenue(10) ít nhất 1 triệu đô trong năm nay và sẽ establish(11) một branch(12) năm tới. Do vậy, Tin designate(13) Anna làm head of sales department(14) . Tin rất impressed(15) với Anna về experience(16) của cô ấy trong buổi interview(17) vừa rồi.Tin believe(18) rằng công ty sẽ develop(19) nếu có Anna contribute(20) sức lực. Nhiệm vụ của Anna không chỉ làm sao để increase sales(21) của công ty lên mà còn phải responsible for(22) việc tìm ra supplier(23) tốt. Tất nhiên Anna có thể dùng budget(24) của công ty và nhờ human resources department(25) để support(26) tìm. Nếu thuận lợi, cuối năm mọi người đều sẽ được tăng salary(27) và tất nhiên là có opportunity(28) để được promote(29) lên các vị trí khác.",
+    "content":"Hôm nay, Tin hold1 một meeting(2) tại headquarters(3) của công ty. Currently(4), công ty đang có 1 accountant(5) và 02 technician(6) . Trong cuộc họp này, Tin trình bày plan(7) và determine(8) rằng goal(9) của công ty phải đạt revenue(10) ít nhất 1 triệu đô trong năm nay và sẽ establish(11) một branch(12) năm tới. Do vậy, Tin designate(13) Anna làm head of sales department(14) . Tin rất impressed(15) với Anna về experience(16) của cô ấy trong buổi interview(17) vừa rồi.Tin believe(18) rằng công ty sẽ develop(19) nếu có Anna contribute(20) sức lực. Nhiệm vụ của Anna không chỉ làm sao để increase sales(21) của công ty lên mà còn phải responsible for(22) việc tìm ra supplier(23) tốt. Tất nhiên Anna có thể dùng budget(24) của công ty và nhờ human resources department(25) để support(26) tìm. Nếu thuận lợi, cuối năm mọi người đều sẽ được tăng salary(27) và tất nhiên là có opportunity(28) để được promote(29) lên các vị trí khác.",
     "transfers": [
       {
         "id": 1,
@@ -350,47 +350,47 @@
       {
         "id": 21,
         "es": "increase sales",
-        "vi": "đánh giá"
+        "vi": "tăng bán hàng"
       },
       {
         "id": 22,
         "es": "responsible for",
-        "vi": "bài nói/bài phát biểu"
+        "vi": "chịu trách nhiệm"
       },
       {
         "id": 23,
         "es": "supplier",
-        "vi": "đăng ký"
+        "vi": "nhà cung cấp"
       },
       {
         "id": 24,
         "es": "budget",
-        "vi": "thành viên"
+        "vi": "ngân sách"
       },
       {
         "id": 25,
         "es": "human resources department",
-        "vi": "thành viên"
+        "vi": "phòng nhân sự"
       },
       {
         "id": 26,
         "es": "support",
-        "vi": "thành viên"
+        "vi": "hỗ trợ"
       },
       {
         "id": 27,
         "es": "salary",
-        "vi": "thành viên"
+        "vi": "lương"
       },
       {
         "id": 28,
         "es": "opportunity",
-        "vi": "thành viên"
+        "vi": "cơ hội"
       },
       {
         "id": 29,
         "es": "promote",
-        "vi": "thành viên"
+        "vi": "thăng tiến"
       }
     ]
   },
