@@ -10,7 +10,8 @@ import { MyStack } from './src/components/home/Home';
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Settings!</Text>
+      <Text>Phan Thanh Cong</Text>
+      <Text>anhdangcode.com</Text>
     </View>
   );
 }
@@ -25,7 +26,7 @@ export default function App() {
             let iconName;
             if (route.name === "Home") {
               iconName = focused ? "home" : "home-outline";
-            } else if (route.name === "User") {
+            } else if (route.name === "About") {
               iconName = focused ? "person" : "person-outline";
             }
             // You can return any component that you like here!
@@ -37,7 +38,7 @@ export default function App() {
         })}
       >
         <Tab.Screen name="Home" component={MyStack} />
-        <Tab.Screen name="User" component={SettingsScreen} />
+        <Tab.Screen name="About" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
     // <NavigationContainer>

@@ -21,7 +21,7 @@ import { color } from "react-native-elements/dist/helpers";
 const TextEng = ({ text, handleShowModal, topic }) => {
   const index = text.indexOf("(");
   if (index !== -1) {
-    console.log(text)
+    console.log(text);
     const number = Number.parseInt(text.substring(index + 1));
     const result = topic.transfers.find((obj) => obj.id == number);
     return (
@@ -73,7 +73,6 @@ export default function Topic({ route, navigation }) {
             const obj = phonetics[0];
             setTextTrans({ ...objText, ...obj });
             setFecthing(false);
-            console.log("V")
           } catch (error) {
             console.log(error);
             setTextTrans(objText);
@@ -107,6 +106,7 @@ export default function Topic({ route, navigation }) {
       console.log(error);
     }
   };
+  
   React.useEffect(() => {
     return sound
       ? () => {
@@ -115,10 +115,12 @@ export default function Topic({ route, navigation }) {
         }
       : undefined;
   }, [sound]);
+
   const handleCloseModal = () => {
     setModalVisible(false);
     setTextTrans({});
   };
+
   const onGame = () => navigation.navigate("Chơi game", route.params);
 
   return (
@@ -129,7 +131,7 @@ export default function Topic({ route, navigation }) {
             <Text>
               <View style={styles.flexCenter}>
                 {fecthing ? (
-                  <ActivityIndicator size="large" />
+                  <ActivityIndicator size="large" color="#4F8EF7" />
                 ) : (
                   <Ionicons
                     name="volume-high-outline"
@@ -141,9 +143,9 @@ export default function Topic({ route, navigation }) {
                 )}
 
                 <Text style={styles.textShow}>{textTrans.es}</Text>
-                {!fecthing &&
+                {!fecthing && (
                   <Text style={styles.textShow}>{textTrans.text}</Text>
-                }
+                )}
                 <View
                   style={{
                     width: 200,
@@ -294,7 +296,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#ea911c",
     padding: 10,
-    display: 'flex',
-    alignItems: 'center'
+    display: "flex",
+    alignItems: "center",
   },
 });
