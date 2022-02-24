@@ -17,11 +17,11 @@ import { Overlay } from "react-native-elements";
 import { Ionicons } from "react-native-vector-icons";
 import { Audio } from "expo-av";
 import { color } from "react-native-elements/dist/helpers";
+const URL = "http://english.anhdangcode.com";
 
 const TextEng = ({ text, handleShowModal, topic }) => {
   const index = text.indexOf("(");
   if (index !== -1) {
-    console.log(text);
     const number = Number.parseInt(text.substring(index + 1));
     const result = topic.transfers.find((obj) => obj.id == number);
     return (
@@ -34,7 +34,7 @@ const TextEng = ({ text, handleShowModal, topic }) => {
     );
   } else {
     const regex = /\d+/;
-    if (regex.exec(text)) {
+    if (regex.exec(text) && text.indexOf("%") == -1) {
       const number = Number.parseInt(text.match(regex)[0]);
       const result = topic.transfers.find((obj) => obj.id == number);
       return (
@@ -58,55 +58,42 @@ export default function Topic({ route, navigation }) {
     const { id } = route.params;
     setTopic(data.topic[id - 1]);
   }, []);
-  console.log(topic);
   const handleShowModal = (objText) => {
     setModalVisible(true);
     setTextTrans(objText);
-    setFecthing(true);
-    try {
-      //de11f79466cfb16683c1810e0b9ff27c7313fc54
-      fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + objText.es)
-        .then((res) => res.json())
-        .then((arr) => {
-          try {
-            const { phonetics } = arr[0];
-            const obj = phonetics[0];
-            setTextTrans({ ...objText, ...obj });
-            setFecthing(false);
-          } catch (error) {
-            console.log(error);
-            setTextTrans(objText);
-            setFecthing(false);
-          }
-        });
-    } catch (error) {}
   };
   const [modalVisible, setModalVisible] = useState(false);
   const sound = new Audio.Sound();
 
   const handleAudio = async () => {
     try {
-      if (!textTrans.audio) {
-        return;
-      }
-      const link = "https://" + textTrans.audio.substring(2);
-      await sound.loadAsync({
-        uri: link,
-      });
-      const checkLoaded = await sound.getStatusAsync();
-      if (checkLoaded.isLoaded) {
-        await sound.playAsync();
-        setTimeout(() => {
-          sound.unloadAsync();
-        }, 1000);
-      } else {
-        console.log("Error in Loading mp3");
-      }
+      setFecthing(true);
+      fetch(URL + "/speak?text=" + textTrans.es)
+        .then((res) => res.json())
+        .then(async ({ result }) => {
+          try {
+            setFecthing(false);
+            await sound.loadAsync({
+              uri: URL + "/media/" + result,
+            });
+            const checkLoaded = await sound.getStatusAsync();
+            if (checkLoaded.isLoaded) {
+              await sound.playAsync();
+            } else {
+              console.log("Error in Loading mp3");
+            }
+            fetch(URL + "/delete?name=" + result);
+          } catch (error) {
+            console.log(error);
+            setTextTrans(objText);
+            setFecthing(false);
+          }
+        });
     } catch (error) {
       console.log(error);
     }
   };
-  
+
   React.useEffect(() => {
     return sound
       ? () => {

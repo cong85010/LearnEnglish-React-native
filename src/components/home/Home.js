@@ -14,6 +14,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import data from "../../../assets/documents/topic1/topic.json";
 import Game from "../games/Game";
 import Score from "../score/Score";
+import Review from "./review/Review";
 const arrCourse = [
   {
     image: img1,
@@ -83,6 +84,7 @@ export function MyStack() {
       <Stack.Screen name="Chủ đề" component={Topic} />
       <Stack.Screen name="Chơi game" component={Game} />
       <Stack.Screen name="Điểm" component={Score} />
+      <Stack.Screen name="Xem lại" component={Review} />
       {/* <Stack.Screen name="Settings" component={Settings} /> */}
     </Stack.Navigator>
   );

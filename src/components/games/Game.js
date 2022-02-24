@@ -12,12 +12,13 @@ import { Overlay } from "react-native-elements";
 import { Audio } from "expo-av";
 
 const Store = createContext({});
+const URL = "https://api.deepcode.tk";
 
 const Option = ({ text }) => {
   const { hanleNext, className, loading } = useContext(Store);
   return (
     <TouchableOpacity
-      style={[ 
+      style={[
         styles.option,
         text &&
           className?.text === text &&
@@ -25,52 +26,20 @@ const Option = ({ text }) => {
       ]}
       onPress={() => !loading && hanleNext(text)}
     >
-      {loading ? (
-        <ActivityIndicator size="large" color="blue" />
-      ) : (
-        <Text style={{ fontSize: 22, color: "blue" }}>{text}</Text>
-      )}
+      <Text style={{ fontSize: 22, color: "blue" }}>{text}</Text>
     </TouchableOpacity>
   );
 };
-const Options = ({ qes }) => {
-  const [bool, setBool] = useState(true);
-  const { setPosition } = useContext(Store);
-  useEffect(() => {
-    setBool(Math.floor(Math.random() * 3));
-  }, [qes?.qs]);
-  useEffect(() => {
-    bool == 0
-      ? setPosition([qes?.as, qes?.temp, qes?.temp2])
-      : bool == 1
-      ? setPosition([qes?.temp, qes?.as, qes?.temp2])
-      : setPosition([qes?.temp, qes?.temp2, qes?.as]);
-  }, [bool]);
+export const Options = ({ qes }) => {
   return (
     <>
-      {bool == 0 ? (
-        <>
-          <Option text={qes?.as} />
-          <Option text={qes?.temp} />
-          <Option text={qes?.temp2} />
-        </>
-      ) : bool == 1 ? (
-        <>
-          <Option text={qes?.temp} />
-          <Option text={qes?.as} />
-          <Option text={qes?.temp2} />
-        </>
-      ) : (
-        <>
-          <Option text={qes?.temp} />
-          <Option text={qes?.temp2} />
-          <Option text={qes?.as} />
-        </>
-      )}
+      {qes?.arrAS?.map((text, index) => (
+        <Option text={text} key={index} />
+      ))}
     </>
   );
 };
-
+//vi tri chon
 export default function Game({ route, navigation }) {
   const { id } = route.params;
   const [arr, setArr] = useState(data.topic[id - 1].transfers);
@@ -79,8 +48,8 @@ export default function Game({ route, navigation }) {
   const [className, setClassName] = useState(null);
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  const [position, setPosition] = useState([]);
 
+  //set POSITION
   function addQuestion() {
     const arrQues = [].concat(data.topic[id - 1].transfers);
     const quetion = arr[Math.floor(Math.random() * arr.length)];
@@ -93,28 +62,37 @@ export default function Game({ route, navigation }) {
       temp2 = arrQues[Math.floor(Math.random() * arrQues.length)];
     }
     const bool = Math.round(Math.random());
-    bool
-      ? setQuestion({
-          checkEsAudio: false,
-          qs: quetion.vi,
-          as: quetion.es,
-          temp: temp.es,
-          temp2: temp2.es,
-        }) //lay tieng viet lam cau hoi
-      : setQuestion({
-          checkEsAudio: true,
-          qs: quetion.es,
-          as: quetion.vi,
-          temp: temp.vi,
-          temp2: temp2.vi,
-        }); //lay tieng anh lam  cau hoi
+
+    if (bool) {
+      const randomAS = [quetion?.es, temp.es, temp2.es].sort(
+        () => Math.random() - 0.5
+      );
+      setQuestion({
+        id: id,
+        checkEsAudio: false,
+        qs: quetion.vi,
+        as: quetion.es,
+        arrAS: randomAS,
+      }); //lay tieng viet lam cau hoi
+    } else {
+      const randomAS = [quetion?.vi, temp.vi, temp2.vi].sort(
+        () => Math.random() - 0.5
+      );
+      setQuestion({
+        id: id,
+        checkEsAudio: true,
+        qs: quetion.es,
+        as: quetion.vi,
+        arrAS: randomAS,
+      }); //lay tieng anh lam  cau hoi
+    }
   }
   useEffect(() => {
     setCounter({ numAnswer: 0, allQues: [], current: 1, size: arr.length });
   }, []);
 
   useEffect(() => {
-    if (counter?.current == 2) setModalVisible(true);
+    if (counter?.current == 4) setModalVisible(true);
 
     if (
       counter &&
@@ -135,9 +113,8 @@ export default function Game({ route, navigation }) {
   const handleAudio = () => {
     try {
       const word = question.checkEsAudio ? question.qs : question.as;
-      console.log(question);
-      fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + word)
-        .then((res) => res.json())
+      fetch(URL + "/text=" + word)
+        .then((res) => console.log(res))
         .then(async (arr) => {
           try {
             const { phonetics } = arr[0];
@@ -178,14 +155,14 @@ export default function Game({ route, navigation }) {
     await handleAudio();
     if (rs === question?.as) {
       setClassName({ text: rs, res: true });
-      const posYours = position.indexOf(rs);
-      const posAsYours = position.indexOf(question.as);
+      const posYours = question.arrAS.indexOf(rs);
+      const posAsYours = question.arrAS.indexOf(question.as);
       const ques = {
         num: counter.numAnswer + 1,
         ...question,
         posAS: posAsYours,
         yourS: posYours,
-        pos: position,
+        pos: question.arrAS,
       };
       const arrQues = [...counter.allQues, ques];
       setCounter((e) => {
@@ -198,14 +175,14 @@ export default function Game({ route, navigation }) {
       });
     } else {
       setClassName({ text: rs, rss: false });
-      const posYours = position.indexOf(rs);
-      const posAsYours = position.indexOf(question.as);
+      const posYours = question.arrAS.indexOf(rs);
+      const posAsYours = question.arrAS.indexOf(question.as);
       const ques = {
         num: counter.numAnswer + 1,
         ...question,
         posAS: posAsYours,
         yourS: posYours,
-        pos: position,
+        pos: question.arrAS,
       };
       const arrQues = [...counter.allQues, ques];
       setCounter((e) => {
@@ -217,8 +194,6 @@ export default function Game({ route, navigation }) {
       });
     }
   };
-  //load thoi // xay dung danh sach cau tl
-  console.log(counter);
   const onCloseModal = () => {
     const arrQ = data.topic[id - 1].transfers;
     setCounter({ numAnswer: 0, allQues: [], current: 1, size: arrQ.length });
@@ -230,7 +205,7 @@ export default function Game({ route, navigation }) {
     setModalVisible(false);
   };
   return (
-    <Store.Provider value={{ hanleNext, className, setPosition, loading }}>
+    <Store.Provider value={{ hanleNext, className, loading }}>
       <View style={styles.container}>
         <Overlay isVisible={modalVisible} onBackdropPress={onCloseModal}>
           <View style={styles.viewTrans}>
@@ -255,7 +230,11 @@ export default function Game({ route, navigation }) {
                 style={[styles.button, { backgroundColor: "#008CBA" }]}
                 onPress={hanleNextScore}
               >
-                <Text style={{ fontSize: 22, color: "white" }}>Xem điểm</Text>
+                <Text
+                  style={{ fontSize: 22, color: "white", textAlign: "center" }}
+                >
+                  Xem điểm
+                </Text>
               </TouchableOpacity>
             </View>
 
@@ -263,12 +242,16 @@ export default function Game({ route, navigation }) {
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: "#e7e7e7" }]}
               >
-                <Text style={{ fontSize: 22 }}>Thoát</Text>
+                <Text style={{ fontSize: 22, textAlign: "center" }}>Thoát</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: "#4CAF50" }]}
               >
-                <Text style={{ fontSize: 22, color: "white" }}>Làm lại</Text>
+                <Text
+                  style={{ fontSize: 22, color: "white", textAlign: "center" }}
+                >
+                  Làm lại
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
