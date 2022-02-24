@@ -1,21 +1,40 @@
 import React from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Dimensions } from "react-native";
+import { Options } from "../games/Game";
 
-export default function Score({ route }) {
-  const { allQues } = route.params;
-  console.log(allQues);
+export default function Score({ route, navigation }) {
+  const { allQues, numAnswer, size } = route.params;
+  const hanleStyle = (obj, index) => {
+    if (obj.yourS === index) {
+      if (obj.yourS === obj.posAS) {
+        return style.success;
+      } else {
+        return style.fail;
+      }
+    }
+    if (index == obj.posAS) {
+      return style.success;
+    }
+  };
+  //nghe - question
+  const hanleDetailQues = (obj) =>  navigation.navigate("Xem lại", obj);
   return (
     <View>
       <Text style={style.textBig}>Danh sách câu</Text>
+      <View style={[style.flexRow, { justifyContent: "space-around", marginTop: 30 }]}>
+        <Text style={{ fontSize: 22 }}>Đúng: {numAnswer}</Text>
+        <Text style={{ fontSize: 22 }}>Tổng: {size}</Text>
+      </View>
       <ScrollView
         style={{ marginTop: 30, height: Dimensions.get("window").height - 200 }}
       >
         {allQues?.map((obj, index) => (
-          <View
+          <TouchableOpacity
             key={index}
             style={[style.flexRow, { width: "100%", marginTop: 30 }]}
+            onPress={() => hanleDetailQues(obj)}
           >
             <View style={{ textAlign: "center", marginLeft: 20 }}>
               <Ionicons name="checkmark-outline" size={40} color="green" />
@@ -33,16 +52,13 @@ export default function Score({ route }) {
               {obj.pos.map((cir, index) => (
                 <View
                   key={index}
-                  style={[
-                    style.circle,
-                      (obj.yourS === index ? style.success : style.fail),
-                  ]}
+                  style={[style.circle, hanleStyle(obj, index)]}
                 >
-                  <Text style={style.textCircle}>{index + 1}</Text> 
+                  <Text style={style.textCircle}>{index + 1}</Text>
                 </View>
               ))}
             </View>
-          </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </View>
