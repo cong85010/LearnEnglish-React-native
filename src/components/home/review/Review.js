@@ -37,26 +37,33 @@ const Options = ({ qes }) => {
     </>
   );
 };
+
 export default function Review({ route, navigation }) {
-  console.log(route.params);
   const [question, setQuestion] = useState();
-  const { obj } = route.params;
+  const [indexQues, setIndexQues] = useState();
+  const { allQues } = route.params;
   const { idCau } = route.params;
   // const [arr, setArr] = useState(data.topic[id - 1].transfers);
   useEffect(() => {
-    setQuestion(obj)
-  }, [idCau]);
+    setQuestion(allQues[idCau]);
+    setIndexQues(idCau);
+  }, []);
   function onSwipeLeft() {
-    console.log("left");
-    const id = idCau - 1;
-    navigation.navigate("Xem lại", { obj, idCau: id });
+    const id = indexQues + 1;
+    if (id <= 2) {
+      setIndexQues(id);
+      setQuestion(allQues[id]);
+    }
   }
 
   function onSwipeRight() {
-    console.log("right");
-    const id = idCau + 1;
-    navigation.navigate("Xem lại", { obj, idCau: id });
+    const id = indexQues - 1;
+    if (id >= 0) {
+      setIndexQues(id);
+      setQuestion(allQues[id]);
+    }
   }
+  console.log(question);
   function onSwipe(gestureName, gestureState) {
     const { SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT } = swipeDirections;
   }
@@ -81,13 +88,20 @@ export default function Review({ route, navigation }) {
           <Text style={styles.title}>Trả lời</Text>
         </View>
         <Options qes={question} />
-        <View style={{ flexDirection: "row" }}>
-          <TouchableOpacity>
-            <Ionicons name="chevron-back-outline" size={40} color="green" />
+        <View style={{flexDirection: "row", justifyContent: "space-between", marginTop: 50}}>
+          <TouchableOpacity style={{padding: 20}} onPress={onSwipeRight}>
+            <Ionicons name="chevron-back-circle-outline" size={50} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Ionicons name="chevron-forward-outline" size={40} color="green" />
+          <TouchableOpacity style={{padding: 20}} onPress={onSwipeLeft}>
+            <Ionicons name="chevron-forward-circle-outline" size={50} color="black" />
           </TouchableOpacity>
+        </View>
+        <View
+          style={[styles.viewCount, { width: Dimensions.get("window").width }]}
+        >
+          <Text style={styles.textCount}>
+            Câu: {indexQues + 1}/{allQues.length}
+          </Text>
         </View>
       </View>
     </GestureRecognizer>
@@ -124,21 +138,6 @@ const styles = StyleSheet.create({
   fail: {
     backgroundColor: "red",
   },
-  viewCount: {
-    position: "absolute",
-    bottom: 0,
-    borderColor: "black",
-    borderWidth: 1,
-    padding: 10,
-    width: "100%",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-  },
-  textCount: {
-    textAlign: "center",
-    fontSize: 22,
-  },
   viewTrans: {
     padding: 10,
   },
@@ -155,5 +154,20 @@ const styles = StyleSheet.create({
     width: 130,
     padding: 5,
     textAlign: "center",
+  },
+  viewCount: {
+    position: "absolute",
+    bottom: 300,
+    borderColor: "black",
+    borderWidth: 1,
+    padding: 10,
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+  },
+  textCount: {
+    textAlign: "center",
+    fontSize: 22,
   },
 });

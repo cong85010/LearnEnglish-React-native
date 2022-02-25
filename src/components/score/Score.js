@@ -35,7 +35,7 @@ export default function Score({ route, navigation }) {
     }
   };
   //nghe - question
-  const hanleDetailQues = (obj, idCau) => navigation.navigate("Xem lại", {obj, idCau});
+  const hanleDetailQues = (allQues, idCau) => navigation.navigate("Xem lại", {allQues, idCau});
   return (
     <View>
       <Text style={style.textBig}>Danh sách câu</Text>
@@ -48,17 +48,17 @@ export default function Score({ route, navigation }) {
       <ScrollView
         style={{ marginTop: 30, height: Dimensions.get("window").height - 300 }}
       >
-        {allQues?.map((obj, idCau) => (
+        {allQues?.map((obj, indexCau) => (
           <TouchableOpacity
-            key={idCau}
+            key={indexCau}
             style={[style.flexRow, { width: "100%", marginTop: 30 }]}
-            onPress={() => hanleDetailQues(obj, idCau)}
+            onPress={() => hanleDetailQues(allQues, indexCau)}
           >
             <View style={{ textAlign: "center", marginLeft: 20 }}>
               {obj.rs?<Ionicons name="checkmark-outline" size={40} color="green" />:<Ionicons name="close-outline" size={40} color="red" />}
             </View>
             <View style={{ width: 100, marginLeft: 10 }}>
-              <Text style={{ fontSize: 22 }}>Câu: {idCau + 1}</Text>
+              <Text style={{ fontSize: 22 }}>Câu: {indexCau + 1}</Text>
             </View>
             <View
               style={[
@@ -66,7 +66,6 @@ export default function Score({ route, navigation }) {
                 { justifyContent: "space-around", height: "100%" },
               ]}
             >
-              {/* 1 2 3 */}
               {obj.pos.map((cir, index) => (
                 <View
                   key={index}
