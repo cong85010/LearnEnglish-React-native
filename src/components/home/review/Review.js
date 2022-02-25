@@ -1,5 +1,11 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import data from "../../../../assets/documents/topic1/topic.json";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import GestureRecognizer, {
@@ -19,7 +25,6 @@ const Option = ({ text, answer }) => {
   );
 };
 const Options = ({ qes }) => {
-  console.log(qes);
   return (
     <>
       {qes?.arrAS?.map((text, index) => (
@@ -32,50 +37,50 @@ const Options = ({ qes }) => {
     </>
   );
 };
-export default function Review({ route }) {
+export default function Review({ route, navigation }) {
   console.log(route.params);
+  const [question, setQuestion] = useState();
   const { obj } = route.params;
   const { idCau } = route.params;
   // const [arr, setArr] = useState(data.topic[id - 1].transfers);
-  console.log(obj);
+  useEffect(() => {
+    setQuestion(obj)
+  }, [idCau]);
+  function onSwipeLeft() {
+    console.log("left");
+    const id = idCau - 1;
+    navigation.navigate("Xem lại", { obj, idCau: id });
+  }
+
+  function onSwipeRight() {
+    console.log("right");
+    const id = idCau + 1;
+    navigation.navigate("Xem lại", { obj, idCau: id });
+  }
   function onSwipe(gestureName, gestureState) {
     const { SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT } = swipeDirections;
-    // this.setState({ gestureName: gestureName });
-    switch (gestureName) {
-      case SWIPE_UP:
-        console.log("up");
-        break;
-      case SWIPE_DOWN:
-        this.setState({ backgroundColor: "green" });
-        break;
-      case SWIPE_LEFT:
-        console.log("left");
-
-        break;
-      case SWIPE_RIGHT:
-        this.setState({ backgroundColor: "yellow" });
-        break;
-    }
   }
   const config = {
     velocityThreshold: 0.3,
-    directionalOffsetThreshold: 80
+    directionalOffsetThreshold: 80,
   };
 
   return (
-    <View style={styles.container}>
-      <GestureRecognizer
-        onSwipe={(direction, state) => onSwipe(direction, state)}
-        config={config}
-      >
+    <GestureRecognizer
+      onSwipe={(direction, state) => onSwipe(direction, state)}
+      onSwipeLeft={() => onSwipeLeft()}
+      onSwipeRight={() => onSwipeRight()}
+      config={config}
+    >
+      <View style={[styles.container, { height: 1000 }]}>
         <View>
           <Text style={styles.title}>Từ vựng</Text>
-          <Text style={styles.question}>{obj?.qs}</Text>
+          <Text style={styles.question}>{question?.qs}</Text>
         </View>
         <View style={{ marginTop: 20 }}>
           <Text style={styles.title}>Trả lời</Text>
         </View>
-        <Options qes={obj} />
+        <Options qes={question} />
         <View style={{ flexDirection: "row" }}>
           <TouchableOpacity>
             <Ionicons name="chevron-back-outline" size={40} color="green" />
@@ -84,8 +89,8 @@ export default function Review({ route }) {
             <Ionicons name="chevron-forward-outline" size={40} color="green" />
           </TouchableOpacity>
         </View>
-      </GestureRecognizer>
-    </View>
+      </View>
+    </GestureRecognizer>
   );
 }
 const styles = StyleSheet.create({
