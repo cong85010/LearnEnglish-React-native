@@ -30,7 +30,8 @@ const Option = ({ text }) => {
     </TouchableOpacity>
   );
 };
-export const Options = ({ qes }) => {
+const Options = ({ qes }) => {
+  console.log(qes)
   return (
     <>
       {qes?.arrAS?.map((text, index) => (
@@ -92,20 +93,21 @@ export default function Game({ route, navigation }) {
   }, []);
 
   useEffect(() => {
-    if (counter?.current == 4) setModalVisible(true);
-
-    if (
-      counter &&
-      counter.current !== 1 &&
-      counter?.current === counter?.size
-    ) {
-      setModalVisible(true);
-    } else
-      setTimeout(() => {
+    setTimeout(() => {
+      if (counter?.current == 4) setModalVisible(true);
+      if (
+        counter &&
+        counter.current !== 1 &&
+        counter?.current-1 === counter?.size
+      ) {
+        setModalVisible(true);
+      } else {
         setLoading(false);
         addQuestion();
         setClassName(null);
-      }, 1000);
+      }
+    }, 1000);
+
     return clearTimeout();
   }, [counter]);
   const sound = new Audio.Sound();
@@ -113,29 +115,24 @@ export default function Game({ route, navigation }) {
   const handleAudio = () => {
     try {
       const word = question.checkEsAudio ? question.qs : question.as;
-      fetch(URL + "/text=" + word)
-        .then((res) => console.log(res))
-        .then(async (arr) => {
-          try {
-            const { phonetics } = arr[0];
-            const obj = phonetics[0];
-            if (!obj.audio) {
-              return;
-            }
-            const link = "https://" + obj.audio.substring(2);
-            await sound.loadAsync({
-              uri: link,
-            });
-            const checkLoaded = await sound.getStatusAsync();
-            if (checkLoaded.isLoaded) {
-              await sound.playAsync();
-            } else {
-              console.log("Error in Loading mp3");
-            }
-          } catch (error) {
-            console.log(error);
-          }
-        });
+      // fetch(URL + "/speak?text=" + word)
+      //   .then((res) => res.json())
+      //   .then(async ({ result }) => {
+      //     try {
+      //       await sound.loadAsync({
+      //         uri: URL + "/media/" + result,
+      //       });
+      //       const checkLoaded = await sound.getStatusAsync();
+      //       if (checkLoaded.isLoaded) {
+      //         await sound.playAsync();
+      //       } else {
+      //         console.log("Error in Loading mp3");
+      //       }
+      //       fetch(URL + "/delete?name=" + result);
+      //     } catch (error) {
+      //       console.log(error);
+      //     }
+      //   });
     } catch (error) {
       console.log(error);
     }
@@ -163,6 +160,7 @@ export default function Game({ route, navigation }) {
         posAS: posAsYours,
         yourS: posYours,
         pos: question.arrAS,
+        rs: true,
       };
       const arrQues = [...counter.allQues, ques];
       setCounter((e) => {
@@ -183,6 +181,7 @@ export default function Game({ route, navigation }) {
         posAS: posAsYours,
         yourS: posYours,
         pos: question.arrAS,
+        rs: false,
       };
       const arrQues = [...counter.allQues, ques];
       setCounter((e) => {
@@ -201,8 +200,15 @@ export default function Game({ route, navigation }) {
     setModalVisible(false);
   };
   const hanleNextScore = () => {
-    navigation.navigate("Điểm", counter);
     setModalVisible(false);
+    navigation.navigate("Điểm", counter);
+  };
+  const hanleAgainScore = () => {
+    onCloseModal();
+  };
+  const hanleOutScore = () => {
+    setModalVisible(false);
+    navigation.navigate("Chủ đề", { id: id });
   };
   return (
     <Store.Provider value={{ hanleNext, className, loading }}>
@@ -212,7 +218,7 @@ export default function Game({ route, navigation }) {
             <Text style={styles.title}>Hoàn thành</Text>
             <View
               style={{
-                width: 200,
+                width: "100%",
                 borderBottomColor: "#cbcaca",
                 borderBottomWidth: 1,
                 marginTop: 20,
@@ -240,12 +246,14 @@ export default function Game({ route, navigation }) {
 
             <View style={styles.listButton}>
               <TouchableOpacity
+                onPress={hanleOutScore}
                 style={[styles.button, { backgroundColor: "#e7e7e7" }]}
               >
                 <Text style={{ fontSize: 22, textAlign: "center" }}>Thoát</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: "#4CAF50" }]}
+                onPress={hanleAgainScore}
               >
                 <Text
                   style={{ fontSize: 22, color: "white", textAlign: "center" }}

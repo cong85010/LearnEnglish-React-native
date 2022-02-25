@@ -1,46 +1,64 @@
 import React from "react";
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Dimensions } from "react-native";
-import { Options } from "../games/Game";
 
 export default function Score({ route, navigation }) {
   const { allQues, numAnswer, size } = route.params;
-  const hanleStyle = (obj, index) => {
+  console.log(allQues  )
+  const isTrueAnswer = (obj, index) => {
     if (obj.yourS === index) {
       if (obj.yourS === obj.posAS) {
-        return style.success;
+        return 1;
       } else {
-        return style.fail;
+        return 0;
       }
     }
     if (index == obj.posAS) {
+      return 1;
+    }
+    return -1;
+  };
+  const hanleStyle = (obj, index) => {
+    const isAnswer = isTrueAnswer(obj, index);
+    if (isAnswer == 1) {
       return style.success;
+    }
+    if (isAnswer == 0) {
+      return style.fail;
     }
   };
   //nghe - question
-  const hanleDetailQues = (obj) =>  navigation.navigate("Xem lại", obj);
+  const hanleDetailQues = (obj, idCau) => navigation.navigate("Xem lại", {obj, idCau});
   return (
     <View>
       <Text style={style.textBig}>Danh sách câu</Text>
-      <View style={[style.flexRow, { justifyContent: "space-around", marginTop: 30 }]}>
+      <View
+        style={{flexDirection: "row", justifyContent: "space-around", marginTop: 30}}
+      >
         <Text style={{ fontSize: 22 }}>Đúng: {numAnswer}</Text>
         <Text style={{ fontSize: 22 }}>Tổng: {size}</Text>
       </View>
       <ScrollView
-        style={{ marginTop: 30, height: Dimensions.get("window").height - 200 }}
+        style={{ marginTop: 30, height: Dimensions.get("window").height - 300 }}
       >
-        {allQues?.map((obj, index) => (
+        {allQues?.map((obj, idCau) => (
           <TouchableOpacity
-            key={index}
+            key={idCau}
             style={[style.flexRow, { width: "100%", marginTop: 30 }]}
-            onPress={() => hanleDetailQues(obj)}
+            onPress={() => hanleDetailQues(obj, idCau)}
           >
             <View style={{ textAlign: "center", marginLeft: 20 }}>
-              <Ionicons name="checkmark-outline" size={40} color="green" />
+              {obj.rs?<Ionicons name="checkmark-outline" size={40} color="green" />:<Ionicons name="close-outline" size={40} color="red" />}
             </View>
-            <View style={{ width: 100 }}>
-              <Text style={{ fontSize: 22 }}>Câu: {index + 1}</Text>
+            <View style={{ width: 100, marginLeft: 10 }}>
+              <Text style={{ fontSize: 22 }}>Câu: {idCau + 1}</Text>
             </View>
             <View
               style={[
@@ -54,7 +72,9 @@ export default function Score({ route, navigation }) {
                   key={index}
                   style={[style.circle, hanleStyle(obj, index)]}
                 >
-                  <Text style={style.textCircle}>{index + 1}</Text>
+                  <Text style={[style.textCircle, { textAlign: "center" }]}>
+                    {index + 1}
+                  </Text>
                 </View>
               ))}
             </View>
@@ -81,7 +101,7 @@ const style = StyleSheet.create({
   textCircle: {
     fontSize: 22,
     height: 50,
-    lineHeight: 50,
+    lineHeight: 40,
   },
   circle: {
     width: 50,
