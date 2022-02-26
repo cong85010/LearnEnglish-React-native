@@ -20,7 +20,12 @@ const Option = ({ text, answer }) => {
         text && answer == 1 ? styles.succes : answer == -1 ? styles.fail : "",
       ]}
     >
-      <Text style={{ fontSize: 22, color: "blue" }}>{text}</Text>
+      <Ionicons
+        name={answer ? "ellipse":"ellipse-outline"}
+        size={30}
+        color={answer == 1 ? "#32f032" : answer == -1 ? "red" : "black"}
+      />
+      <Text style={{ fontSize: 22, color: "blue", textTransform: "capitalize" }}>{text}</Text>
     </TouchableOpacity>
   );
 };
@@ -38,19 +43,19 @@ const Options = ({ qes }) => {
   );
 };
 
-export default function Review({ route, navigation }) {
+export default function Review({ route }) {
   const [question, setQuestion] = useState();
   const [indexQues, setIndexQues] = useState();
   const { allQues } = route.params;
   const { idCau } = route.params;
-  // const [arr, setArr] = useState(data.topic[id - 1].transfers);
+  console.log(allQues)
   useEffect(() => {
     setQuestion(allQues[idCau]);
     setIndexQues(idCau);
   }, []);
   function onSwipeLeft() {
     const id = indexQues + 1;
-    if (id <= 2) {
+    if (id < allQues.length) {
       setIndexQues(id);
       setQuestion(allQues[id]);
     }
@@ -63,10 +68,6 @@ export default function Review({ route, navigation }) {
       setQuestion(allQues[id]);
     }
   }
-  console.log(question);
-  function onSwipe(gestureName, gestureState) {
-    const { SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT } = swipeDirections;
-  }
   const config = {
     velocityThreshold: 0.3,
     directionalOffsetThreshold: 80,
@@ -74,9 +75,8 @@ export default function Review({ route, navigation }) {
 
   return (
     <GestureRecognizer
-      onSwipe={(direction, state) => onSwipe(direction, state)}
-      onSwipeLeft={() => onSwipeLeft()}
-      onSwipeRight={() => onSwipeRight()}
+      onSwipeLeft={onSwipeLeft}
+      onSwipeRight={onSwipeRight}
       config={config}
     >
       <View style={[styles.container, { height: 1000 }]}>
@@ -88,12 +88,26 @@ export default function Review({ route, navigation }) {
           <Text style={styles.title}>Trả lời</Text>
         </View>
         <Options qes={question} />
-        <View style={{flexDirection: "row", justifyContent: "space-between", marginTop: 50}}>
-          <TouchableOpacity style={{padding: 20}} onPress={onSwipeRight}>
-            <Ionicons name="chevron-back-circle-outline" size={50} color="black" />
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginTop: 50,
+          }}
+        >
+          <TouchableOpacity style={{ padding: 20 }} onPress={onSwipeRight}>
+            <Ionicons
+              name="chevron-back-circle-outline"
+              size={50}
+              color={indexQues ? "black" : "#cccccc"}
+            />
           </TouchableOpacity>
-          <TouchableOpacity style={{padding: 20}} onPress={onSwipeLeft}>
-            <Ionicons name="chevron-forward-circle-outline" size={50} color="black" />
+          <TouchableOpacity style={{ padding: 20 }} onPress={onSwipeLeft}>
+            <Ionicons
+              name="chevron-forward-circle-outline"
+              size={50}
+              color={indexQues != allQues.length - 1 ? "black" : "#cccccc"}
+            />
           </TouchableOpacity>
         </View>
         <View
@@ -123,20 +137,23 @@ const styles = StyleSheet.create({
     fontSize: 23,
     color: "blue",
     textAlign: "center",
+    textTransform: 'capitalize'
   },
   option: {
+    flexDirection: "row",
     textAlign: "center",
-    borderColor: "black",
-    borderWidth: 1,
-    borderRadius: 20,
+    borderColor: "#cccccc",
+    borderWidth: 2,
+    borderRadius: 10,
     marginTop: 30,
     padding: 20,
+    overflow: 'hidden'
   },
   succes: {
-    backgroundColor: "#32f032",
+    borderColor: "#32f032",
   },
   fail: {
-    backgroundColor: "red",
+    borderColor: "red",
   },
   viewTrans: {
     padding: 10,

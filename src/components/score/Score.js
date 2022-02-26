@@ -10,8 +10,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { Dimensions } from "react-native";
 
 export default function Score({ route, navigation }) {
-  const { allQues, numAnswer, size } = route.params;
-  console.log(allQues  )
+  const { allQues, numAnswer, size, id } = route.params;
   const isTrueAnswer = (obj, index) => {
     if (obj.yourS === index) {
       if (obj.yourS === obj.posAS) {
@@ -34,16 +33,44 @@ export default function Score({ route, navigation }) {
       return style.fail;
     }
   };
+  const hanleOutScore = () => {
+    setModalVisible(false);
+    navigation.navigate("Chủ đề", { id: id });
+  };
+  const hanleAgainScore = () => {
+    onCloseModal();
+  };
   //nghe - question
-  const hanleDetailQues = (allQues, idCau) => navigation.navigate("Xem lại", {allQues, idCau});
+  const hanleDetailQues = (allQues, idCau) =>
+    navigation.navigate("Xem lại", { allQues, idCau });
   return (
     <View>
       <Text style={style.textBig}>Danh sách câu</Text>
       <View
-        style={{flexDirection: "row", justifyContent: "space-around", marginTop: 30}}
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-around",
+          marginTop: 30,
+        }}
       >
         <Text style={{ fontSize: 22 }}>Đúng: {numAnswer}</Text>
         <Text style={{ fontSize: 22 }}>Tổng: {size}</Text>
+      </View>
+      <View style={style.listButton}>
+        <TouchableOpacity
+          onPress={hanleOutScore}
+          style={[style.button, { backgroundColor: "#e7e7e7" }]}
+        >
+          <Text style={{ fontSize: 22, textAlign: "center" }}>Thoát</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[style.button, { backgroundColor: "#4CAF50" }]}
+          onPress={hanleAgainScore}
+        >
+          <Text style={{ fontSize: 22, color: "white", textAlign: "center" }}>
+            Làm lại
+          </Text>
+        </TouchableOpacity>
       </View>
       <ScrollView
         style={{ marginTop: 30, height: Dimensions.get("window").height - 300 }}
@@ -55,7 +82,11 @@ export default function Score({ route, navigation }) {
             onPress={() => hanleDetailQues(allQues, indexCau)}
           >
             <View style={{ textAlign: "center", marginLeft: 20 }}>
-              {obj.rs?<Ionicons name="checkmark-outline" size={40} color="green" />:<Ionicons name="close-outline" size={40} color="red" />}
+              {obj.rs ? (
+                <Ionicons name="checkmark-outline" size={40} color="green" />
+              ) : (
+                <Ionicons name="close-outline" size={40} color="red" />
+              )}
             </View>
             <View style={{ width: 100, marginLeft: 10 }}>
               <Text style={{ fontSize: 22 }}>Câu: {indexCau + 1}</Text>
@@ -116,5 +147,19 @@ const style = StyleSheet.create({
   },
   fail: {
     backgroundColor: "#F5301B",
+  },
+  listButton: {
+    marginTop: 20,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  button: {
+    fontSize: 22,
+    borderRadius: 10,
+    marginLeft: 5,
+    marginRight: 5,
+    width: 130,
+    padding: 5,
+    textAlign: "center",
   },
 });

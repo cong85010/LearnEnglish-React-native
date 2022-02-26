@@ -10,12 +10,13 @@ import {
 import data from "../../../assets/documents/topic1/topic.json";
 import { Overlay } from "react-native-elements";
 import { Audio } from "expo-av";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const Store = createContext({});
 const URL = "https://api.deepcode.tk";
 
 const Option = ({ text }) => {
-  const { hanleNext, className, loading } = useContext(Store);
+  const { hanleNext, className } = useContext(Store);
   return (
     <TouchableOpacity
       style={[
@@ -24,14 +25,29 @@ const Option = ({ text }) => {
           className?.text === text &&
           (className?.res ? styles.succes : styles.fail),
       ]}
-      onPress={() => !loading && hanleNext(text)}
+      onPress={() => hanleNext(text)}
     >
-      <Text style={{ fontSize: 22, color: "blue" }}>{text}</Text>
+      <Ionicons
+        name={className?.text === text ? "ellipse" : "ellipse-outline"}
+        size={30}
+        color={
+          className?.text === text
+            ? className?.res
+              ? "#32f032"
+              : "red"
+            : "black"
+        }
+      />
+      <Text
+        style={{ fontSize: 22, color: "blue", textTransform: "capitalize" }}
+      >
+        {text}
+      </Text>
     </TouchableOpacity>
   );
 };
 const Options = ({ qes }) => {
-  console.log(qes)
+  console.log(qes);
   return (
     <>
       {qes?.arrAS?.map((text, index) => (
@@ -47,7 +63,6 @@ export default function Game({ route, navigation }) {
   const [question, setQuestion] = useState();
   const [counter, setCounter] = useState(null);
   const [className, setClassName] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
   //set POSITION
@@ -98,100 +113,64 @@ export default function Game({ route, navigation }) {
       if (
         counter &&
         counter.current !== 1 &&
-        counter?.current-1 === counter?.size
+        counter?.current - 1 === counter?.size
       ) {
         setModalVisible(true);
       } else {
-        setLoading(false);
         addQuestion();
         setClassName(null);
       }
-    }, 1000);
+    }, 200);
 
     return clearTimeout();
   }, [counter]);
-  const sound = new Audio.Sound();
-
-  const handleAudio = () => {
-    try {
-      const word = question.checkEsAudio ? question.qs : question.as;
-      // fetch(URL + "/speak?text=" + word)
-      //   .then((res) => res.json())
-      //   .then(async ({ result }) => {
-      //     try {
-      //       await sound.loadAsync({
-      //         uri: URL + "/media/" + result,
-      //       });
-      //       const checkLoaded = await sound.getStatusAsync();
-      //       if (checkLoaded.isLoaded) {
-      //         await sound.playAsync();
-      //       } else {
-      //         console.log("Error in Loading mp3");
-      //       }
-      //       fetch(URL + "/delete?name=" + result);
-      //     } catch (error) {
-      //       console.log(error);
-      //     }
-      //   });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  React.useEffect(() => {
-    return sound
-      ? () => {
-          console.log("Unloading Sound");
-          sound.unloadAsync();
-        }
-      : undefined;
-  }, [sound]);
 
   //Vi tri cau
-  const hanleNext = async function (rs) {
-    setLoading(true);
-    await handleAudio();
-    if (rs === question?.as) {
-      setClassName({ text: rs, res: true });
-      const posYours = question.arrAS.indexOf(rs);
-      const posAsYours = question.arrAS.indexOf(question.as);
-      const ques = {
-        num: counter.numAnswer + 1,
-        ...question,
-        posAS: posAsYours,
-        yourS: posYours,
-        pos: question.arrAS,
-        rs: true,
-      };
-      const arrQues = [...counter.allQues, ques];
-      setCounter((e) => {
-        return {
-          ...counter,
-          allQues: arrQues,
-          numAnswer: e?.numAnswer + 1,
-          current: e?.current + 1,
+  const hanleNext = function (rs) {
+    try {
+      if (rs === question?.as) {
+        setClassName({ text: rs, res: true });
+        const posYours = question.arrAS.indexOf(rs);
+        const posAsYours = question.arrAS.indexOf(question.as);
+        const ques = {
+          num: counter.numAnswer + 1,
+          ...question,
+          posAS: posAsYours,
+          yourS: posYours,
+          pos: question.arrAS,
+          rs: true,
         };
-      });
-    } else {
-      setClassName({ text: rs, rss: false });
-      const posYours = question.arrAS.indexOf(rs);
-      const posAsYours = question.arrAS.indexOf(question.as);
-      const ques = {
-        num: counter.numAnswer + 1,
-        ...question,
-        posAS: posAsYours,
-        yourS: posYours,
-        pos: question.arrAS,
-        rs: false,
-      };
-      const arrQues = [...counter.allQues, ques];
-      setCounter((e) => {
-        return {
-          ...counter,
-          allQues: arrQues,
-          current: e?.current + 1,
+        const arrQues = [...counter.allQues, ques];
+        setCounter((e) => {
+          return {
+            ...counter,
+            allQues: arrQues,
+            numAnswer: e?.numAnswer + 1,
+            current: e?.current + 1,
+          };
+        });
+      } else {
+        setClassName({ text: rs, rss: false });
+        const posYours = question.arrAS.indexOf(rs);
+        const posAsYours = question.arrAS.indexOf(question.as);
+        const ques = {
+          num: counter.numAnswer + 1,
+          ...question,
+          posAS: posAsYours,
+          yourS: posYours,
+          pos: question.arrAS,
+          rs: false,
         };
-      });
-    }
+        const arrQues = [...counter.allQues, ques];
+        setCounter((e) => {
+          return {
+            ...counter,
+            allQues: arrQues,
+            current: e?.current + 1,
+          };
+        });
+      }
+    } catch (error) {}
   };
   const onCloseModal = () => {
     const arrQ = data.topic[id - 1].transfers;
@@ -211,7 +190,15 @@ export default function Game({ route, navigation }) {
     navigation.navigate("Chủ đề", { id: id });
   };
   return (
-    <Store.Provider value={{ hanleNext, className, loading }}>
+    <Store.Provider value={{ hanleNext, className }}>
+      <View style={styles.viewCount}>
+        <Text style={styles.textCount}>Điểm: {counter?.numAnswer}</Text>
+        <Text style={styles.textCount}>
+          Câu:{" "}
+          {counter?.current <= counter?.size ? counter?.current : counter?.size}
+          /{counter?.size}
+        </Text>
+      </View>
       <View style={styles.container}>
         <Overlay isVisible={modalVisible} onBackdropPress={onCloseModal}>
           <View style={styles.viewTrans}>
@@ -264,6 +251,7 @@ export default function Game({ route, navigation }) {
             </View>
           </View>
         </Overlay>
+
         <View>
           <Text style={styles.title}>Từ vựng</Text>
           <Text style={styles.question}>{question?.qs}</Text>
@@ -274,12 +262,6 @@ export default function Game({ route, navigation }) {
         <View>
           <Options qes={question} />
         </View>
-      </View>
-      <View style={styles.viewCount}>
-        <Text style={styles.textCount}>Điểm: {counter?.numAnswer}</Text>
-        <Text style={styles.textCount}>
-          Câu: {counter?.current}/{counter?.size}
-        </Text>
       </View>
     </Store.Provider>
   );
@@ -300,24 +282,26 @@ const styles = StyleSheet.create({
     fontSize: 23,
     color: "blue",
     textAlign: "center",
+    textTransform: "capitalize",
   },
   option: {
+    flexDirection: "row",
     textAlign: "center",
-    borderColor: "black",
-    borderWidth: 1,
-    borderRadius: 20,
+    borderColor: "#cccccc",
+    borderWidth: 2,
+    borderRadius: 10,
     marginTop: 30,
     padding: 20,
+    overflow: "hidden",
   },
   succes: {
-    backgroundColor: "#32f032",
+    borderColor: "#32f032",
   },
   fail: {
-    backgroundColor: "red",
+    borderColor: "red",
   },
   viewCount: {
-    position: "absolute",
-    bottom: 0,
+    marginTop: 30,
     borderColor: "black",
     borderWidth: 1,
     padding: 10,
