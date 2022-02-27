@@ -14,7 +14,7 @@ export function Course({ course, navigation, route = "Danh sách" }) {
 
 const styles = StyleSheet.create({
   course: {
-    height: 100,
+    height: 120,
     width: "90%",
     flexDirection: "row",
     padding: 20,

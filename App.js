@@ -10,8 +10,12 @@ import { MyStack } from './src/components/home/Home';
 function SettingsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Text style={{ fontSize: 25}}>Liên hệ - Trao đổi</Text>
       <Text>Phan Thanh Cong</Text>
+      <Text>cong85010@gmail.com</Text>
       <Text>anhdangcode.com</Text>
+      <Text style={{ fontSize: 22, marginTop : 30}}>Đóng góp</Text>
+      <Text>Những người bạn - anh - chị</Text>
     </View>
   );
 }

@@ -21,11 +21,15 @@ const Option = ({ text, answer }) => {
       ]}
     >
       <Ionicons
-        name={answer ? "ellipse":"ellipse-outline"}
+        name={answer ? "ellipse" : "ellipse-outline"}
         size={30}
         color={answer == 1 ? "#32f032" : answer == -1 ? "red" : "black"}
       />
-      <Text style={{ fontSize: 22, color: "blue", textTransform: "capitalize" }}>{text}</Text>
+      <Text
+        style={{ fontSize: 22, color: "blue", textTransform: "capitalize" }}
+      >
+        {text}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -48,7 +52,7 @@ export default function Review({ route }) {
   const [indexQues, setIndexQues] = useState();
   const { allQues } = route.params;
   const { idCau } = route.params;
-  console.log(allQues)
+  console.log(allQues);
   useEffect(() => {
     setQuestion(allQues[idCau]);
     setIndexQues(idCau);
@@ -79,20 +83,34 @@ export default function Review({ route }) {
       onSwipeRight={onSwipeRight}
       config={config}
     >
-      <View style={[styles.container, { height: 1000 }]}>
+      <View
+        style={styles.viewCount}
+      >
+        <Text style={styles.textCount}>
+          Câu: {indexQues + 1}/{allQues.length}
+        </Text>
+      </View>
+      <View style={[styles.container, { height: 1000,  }]}>
         <View>
-          <Text style={styles.title}>Từ vựng</Text>
+          <Text style={styles.title}>Question</Text>
           <Text style={styles.question}>{question?.qs}</Text>
         </View>
-        <View style={{ marginTop: 20 }}>
-          <Text style={styles.title}>Trả lời</Text>
-        </View>
+        <View
+              style={{
+                width: "100%",
+                borderBottomColor: "#cbcaca",
+                borderBottomWidth: 1,
+                marginTop: 20,
+                marginBottom: 20,
+              }}
+            />
+       
         <Options qes={question} />
         <View
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            marginTop: 50,
+            marginTop: 30,
           }}
         >
           <TouchableOpacity style={{ padding: 20 }} onPress={onSwipeRight}>
@@ -109,13 +127,6 @@ export default function Review({ route }) {
               color={indexQues != allQues.length - 1 ? "black" : "#cccccc"}
             />
           </TouchableOpacity>
-        </View>
-        <View
-          style={[styles.viewCount, { width: Dimensions.get("window").width }]}
-        >
-          <Text style={styles.textCount}>
-            Câu: {indexQues + 1}/{allQues.length}
-          </Text>
         </View>
       </View>
     </GestureRecognizer>
@@ -137,7 +148,7 @@ const styles = StyleSheet.create({
     fontSize: 23,
     color: "blue",
     textAlign: "center",
-    textTransform: 'capitalize'
+    textTransform: "capitalize",
   },
   option: {
     flexDirection: "row",
@@ -147,7 +158,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 30,
     padding: 20,
-    overflow: 'hidden'
+    overflow: "hidden",
   },
   succes: {
     borderColor: "#32f032",
@@ -173,8 +184,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   viewCount: {
-    position: "absolute",
-    bottom: 300,
+    marginTop: 30,
     borderColor: "black",
     borderWidth: 1,
     padding: 10,

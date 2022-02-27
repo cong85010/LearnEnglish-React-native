@@ -59,12 +59,12 @@ const Options = ({ qes }) => {
 //vi tri chon
 export default function Game({ route, navigation }) {
   const { id } = route.params;
+  const { again = false } = route.params;
   const [arr, setArr] = useState(data.topic[id - 1].transfers);
   const [question, setQuestion] = useState();
   const [counter, setCounter] = useState(null);
   const [className, setClassName] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
-
   //set POSITION
   function addQuestion() {
     const arrQues = [].concat(data.topic[id - 1].transfers);
@@ -180,7 +180,7 @@ export default function Game({ route, navigation }) {
   };
   const hanleNextScore = () => {
     setModalVisible(false);
-    navigation.navigate("Điểm", counter);
+    navigation.navigate("Điểm", { counter, id });
   };
   const hanleAgainScore = () => {
     onCloseModal();
@@ -253,12 +253,18 @@ export default function Game({ route, navigation }) {
         </Overlay>
 
         <View>
-          <Text style={styles.title}>Từ vựng</Text>
+          <Text style={styles.title}>Question</Text>
           <Text style={styles.question}>{question?.qs}</Text>
         </View>
-        <View style={{ marginTop: 20 }}>
-          <Text style={styles.title}>Trả lời</Text>
-        </View>
+        <View
+          style={{
+            width: "100%",
+            borderBottomColor: "#cbcaca",
+            borderBottomWidth: 1,
+            marginTop: 20,
+            marginBottom: 20,
+          }}
+        />
         <View>
           <Options qes={question} />
         </View>

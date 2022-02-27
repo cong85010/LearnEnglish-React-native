@@ -8,9 +8,12 @@ import {
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Dimensions } from "react-native";
+import { BackHandler } from "react-native";
 
 export default function Score({ route, navigation }) {
-  const { allQues, numAnswer, size, id } = route.params;
+  const { allQues, numAnswer, size } = route.params.counter;
+  const { id } = route.params;
+  console.log(route.params);
   const isTrueAnswer = (obj, index) => {
     if (obj.yourS === index) {
       if (obj.yourS === obj.posAS) {
@@ -34,11 +37,14 @@ export default function Score({ route, navigation }) {
     }
   };
   const hanleOutScore = () => {
-    setModalVisible(false);
-    navigation.navigate("Chủ đề", { id: id });
+    // navigation.navigate("Chủ đề", id );
+    navigation.goBack();
+    navigation.goBack();
   };
   const hanleAgainScore = () => {
-    onCloseModal();
+    navigation.navigate("Chơi game", {again: true, id});  
+    //  ???????
+     // navigation.goBack();
   };
   //nghe - question
   const hanleDetailQues = (allQues, idCau) =>
@@ -73,7 +79,7 @@ export default function Score({ route, navigation }) {
         </TouchableOpacity>
       </View>
       <ScrollView
-        style={{ marginTop: 30, height: Dimensions.get("window").height - 300 }}
+        style={{ marginTop: 30, height: Dimensions.get("window").height -338 }}
       >
         {allQues?.map((obj, indexCau) => (
           <TouchableOpacity

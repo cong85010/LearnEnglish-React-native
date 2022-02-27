@@ -15,6 +15,7 @@ import data from "../../../assets/documents/topic1/topic.json";
 import Game from "../games/Game";
 import Score from "../score/Score";
 import Review from "./review/Review";
+import logo from "../../../assets/english.png";
 const arrCourse = [
   {
     image: img1,
@@ -24,7 +25,7 @@ const arrCourse = [
   },
   {
     image: img1,
-    title: "Học 100 từ vựng theo người Do Thái",
+    title: "Chuyện song ngữ Anh - Việt ( Đang bổ sung )",
     id: 2,
     type: "songs",
   },
@@ -37,7 +38,7 @@ const arrCourse2 = [
   },
   {
     image: img1,
-    title: "Học 1500 từ vựng theo người Do Thái",
+    title: "Chuyện song ngữ Anh - Việt ( Đang bổ sung )",
     id: 2,
   },
 ];
@@ -60,12 +61,7 @@ export const Courses = ({ route, navigation }) => {
 export const MainHome = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.imageHome}
-        source={{
-          uri: "https://media.istockphoto.com/vectors/english-vector-id1047570732?k=20&m=1047570732&s=612x612&w=0&h=fcgzlrNrq_hws1ykrLSpyBVZoIGr54EUueD6WAEVW0c=",
-        }}
-      />
+      <Image style={styles.imageHome} source={logo} />
       <ScrollView>
         {arrCourse.map((course, key) => (
           <Course course={course} key={key} navigation={navigation} />
